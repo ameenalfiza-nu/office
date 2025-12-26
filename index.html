@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Status - Coordinator</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: #dcfce7;
+            color: #166534;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        h1 { margin: 0.5rem 0; font-size: 1.8rem; }
+        .location { font-size: 1.5rem; color: var(--primary); font-weight: bold; margin: 10px 0; }
+        .time-box { background: #f1f5f9; padding: 15px; border-radius: 12px; margin-top: 20px; }
+        #clock { font-size: 1.2rem; font-weight: 500; color: #64748b; }
+        .footer-note { margin-top: 20px; font-size: 0.8rem; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="status-badge" id="badge">CURRENTLY OUT</div>
+        <h1>Office of the Coordinator</h1>
+        
+        <div class="location">📍 In Hall B (Lecture)</div>
+        <div class="time-box">
+            Expected Return:<br>
+            <strong id="return-time" style="font-size: 1.4rem;">2:30 PM</strong>
+        </div>
+        <div id="clock">Current Time: --:--</div>
+        <p class="footer-note">Scan QR code for real-time updates.</p>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = "Current Time: " + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
 
